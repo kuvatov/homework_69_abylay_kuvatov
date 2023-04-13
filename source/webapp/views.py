@@ -12,15 +12,24 @@ def get_token_view(request, *args, **kwargs):
     return HttpResponseNotAllowed('Only GET request are allowed')
 
 
-def add(request, *args, **kwargs):
+def calculate(request, action):
     if request.method == 'POST':
         try:
             data = json.loads(request.body)
             a = int(data.get('A'))
             b = int(data.get('B'))
-            result = a + b
+            if action == 'add':
+                result = a + b
+            elif action == 'subtract':
+                result = a - b
+            elif action == 'multiply':
+                result = a * b
+            elif action == 'divide':
+                if b == 0:
+                    raise ZeroDivisionError('Division by zero!')
+                result = a / b
             return JsonResponse({'answer': result})
-        except (TypeError, ValueError):
+        except (TypeError, ValueError, ZeroDivisionError):
             return JsonResponse({'error': 'Division by zero!'}, status=400)
     else:
         return JsonResponse({'error': 'Method not allowed!'}, status=405)
