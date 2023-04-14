@@ -1,0 +1,24 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <title>Calculator</title>
+</head>
+<body>
+<input type="text" id="a">
+<input type="text" id="b">
+<button data-action="add">Add</button>
+<button data-action="subtract">Subtract</button>
+<button data-action="multiply">Multiply</button>
+<button data-action="divide">Divide</button>
+<br><br>
+<div id="result"></div>
+
+<script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
